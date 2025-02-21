@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}Our Services - HealthCare Lab{% endblock %}
+
+{% block content %}
+<section class="services-page">
+    <div class="services-header">
+        <h1>Our Services</h1>
+        <p>Comprehensive diagnostic services for all your healthcare needs</p>
+    </div>
+
+    <div class="services-container">
+        <div class="service-item">
+            <i class="fas fa-flask"></i>
+            <h3>Blood Tests</h3>
+            <p>Complete blood work including CBC, diabetes, thyroid, and more</p>
+            <ul>
+                <li>Complete Blood Count</li>
+                <li>Diabetes Testing</li>
+                <li>Thyroid Profile</li>
+                <li>Lipid Profile</li>
+            </ul>
+            <a href="https://healthconnectagent.pythonanywhere.com/" class="service-btn">Book Now</a>
+        </div>
+
+        <div class="service-item">
+            <i class="fas fa-x-ray"></i>
+            <h3>Imaging Services</h3>
+            <p>Advanced imaging technology for accurate diagnosis</p>
+            <ul>
+                <li>X-Ray</li>
+                <li>MRI Scan</li>
+                <li>CT Scan</li>
+                <li>Ultrasound</li>
+            </ul>
+            <a href="https://tracking-location-ieb3.vercel.app/" class="service-btn">Book Now</a>
+        </div>
+
+        <!-- Add more services as needed -->
+    </div>
+</section>
+{% endblock %} 

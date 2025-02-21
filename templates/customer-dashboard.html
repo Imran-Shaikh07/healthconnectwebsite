@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Dashboard - Health Connect{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="dashboard-wrapper">
+    <div class="dashboard-header">
+        <h1>Customer Dashboard</h1>
+        <div class="breadcrumb">
+            <a href="{{ url_for('index') }}">Home</a> > Dashboard
+        </div>
+    </div>
+
+    <div class="dashboard-content">
+        <!-- Profile Section -->
+        <div class="profile-card">
+            <div class="profile-info">
+                <div class="profile-image">
+                    <img src="{{ customer.photo_url or url_for('static', filename='images/default-profile.png') }}" alt="Profile Photo">
+                </div>
+                <div class="profile-details">
+                    <h2>{{ customer.name }}</h2>
+                    <p class="email">{{ customer.email }}</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Customer Info -->
+        <div class="info-card">
+            <h2>Personal Information</h2>
+            <div class="info-grid">
+                <div class="info-row">
+                    <div class="info-label">Phone</div>
+                    <div class="info-value">{{ customer.phone or 'Not provided' }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Gender</div>
+                    <div class="info-value">{{ customer.gender or 'Not provided' }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Blood Group</div>
+                    <div class="info-value">{{ customer.blood_group or 'Not provided' }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Date of Birth</div>
+                    <div class="info-value">{{ customer.dob.strftime('%d/%m/%Y') if customer.dob else 'Not provided' }}</div>
+                </div>
+                <div class="info-row">
+                    <div class="info-label">Address</div>
+                    <div class="info-value">{{ customer.address or 'Not provided' }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bookings Section -->
+        <div class="bookings-section">
+            <div class="section-header">
+                <h2>My Bookings</h2>
+                <a href="https://healthconnectagent.pythonanywhere.com/"><button class="book-btn" onclick="openBookingModal()">
+                    <i class="fas fa-plus"></i> Book New Test
+                </button></a>
+            </div>
+
+            <div class="customer-tabs">
+                <button class="tab-btn active" data-tab="pending">Pending</button>
+                <button class="tab-btn" data-tab="active">Active</button>
+                <button class="tab-btn" data-tab="completed">Completed</button>
+            </div>
+
+            <div class="tab-content active" id="pending">
+                {% for booking in bookings if booking.status == 'pending' %}
+                <div class="customer-request-card">
+                    <div class="booking-status {{ booking.status }}">{{ booking.status|title }}</div>
+                    <div class="customer-info">
+                        <h3>{{ booking.test_type }}</h3>
+                        <p><i class="far fa-calendar-alt"></i> {{ booking.date_time.strftime('%d/%m/%Y %H:%M') }}</p>
+                        <p><i class="fas fa-map-marker-alt"></i> {{ booking.location }}</p>
+                    </div>
+                    <div class="action-buttons">
+                        <button class="cancel-btn" onclick="cancelBooking('{{ booking.id }}')">
+                            <i class="fas fa-times"></i> Cancel
+                        </button>
+                        {% if booking.technician %}
+                        <button class="view-btn" onclick="viewTechnicianDetails('{{ booking.technician.id }}')">
+                            <i class="fas fa-user-md"></i> View Technician
+                        </button>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Similar structure for active and completed tabs -->
+        </div>
+    </div>
+</div>
+
+<!-- Booking Modal -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Book New Test</h2>
+        <form id="bookTestForm">
+            <!-- Form fields -->
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/customer-dashboard.js') }}"></script>
+{% endblock %} 

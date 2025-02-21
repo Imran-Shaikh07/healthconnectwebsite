@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Your Health, Our Priority</h1>
+            <p>Professional diagnostic services at your convenience</p>
+            <div class="hero-buttons">
+                <a href="#login-options" class="cta-btn">Get Started</a>
+                <a href="#services" class="secondary-btn">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Login Cards Section -->
+    <section class="login-cards" id="login-options">
+        <div class="login-cards-container">
+            <div class="login-card">
+                <i class="fas fa-user-circle"></i>
+                <h3>Customer Login</h3>
+                <p>Book tests, view results, and manage your health records</p>
+                <a href="{{ url_for('customer_login') }}" class="cta-btn">Login as Patient</a>
+            </div>
+            <div class="login-card technician">
+                <i class="fas fa-user-md"></i>
+                <h3>Technician Login</h3>
+                <p>Manage appointments, update test results, and track schedules</p>
+                <a href="{{ url_for('technician_login') }}" class="cta-btn">Login as Technician</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section -->
+    <section class="info-section">
+        <h2>Why Choose Us?</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <h3>24/7 Service</h3>
+                <p>Round-the-clock availability for emergency tests</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-certificate"></i>
+                <h3>Certified Labs</h3>
+                <p>All our labs are certified and follow strict quality standards</p>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-truck"></i>
+                <h3>Home Collection</h3>
+                <p>Convenient sample collection at your doorstep</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-flask"></i>
+                <h3>Blood Tests</h3>
+                <p>Comprehensive blood analysis with quick results</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-x-ray"></i>
+                <h3>X-Ray</h3>
+                <p>High-quality diagnostic imaging services</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>ECG</h3>
+                <p>Advanced cardiac monitoring and diagnosis</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-brain"></i>
+                <h3>MRI Scan</h3>
+                <p>Detailed imaging for precise diagnosis</p>
+            </div>
+        </div>
+    </section>
+{% endblock %} 

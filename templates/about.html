@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - HealthCare Lab{% endblock %}
+
+{% block content %}
+<section class="about-page">
+    <div class="about-header">
+        <h1>About HealthCare Lab</h1>
+        <p>Leading the way in diagnostic healthcare since 2000</p>
+    </div>
+
+    <div class="about-content">
+        <div class="about-section">
+            <h2>Our Story</h2>
+            <p>Founded in 2000, HealthCare Lab has been at the forefront of diagnostic services...</p>
+        </div>
+
+        <div class="about-section">
+            <h2>Our Mission</h2>
+            <p>To provide accurate, timely, and affordable diagnostic services to all...</p>
+        </div>
+
+        <div class="team-section">
+            <h2>Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="{{ url_for('static', filename='uploads/user.png') }}" alt="Team Member">
+                    <h3>Dr. John Doe</h3>
+                    <p>Chief Medical Officer</p>
+                </div>
+                <!-- Add more team members -->
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %} 
